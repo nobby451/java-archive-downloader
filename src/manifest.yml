@@ -3,3 +3,7 @@ name: Java Archive Downloader
 version: 0.0.1
 browser_action:
   default_popup: popup.html
+permissions:
+  - cookies
+  - downloads
+  - 'http://www.oracle.com/'
