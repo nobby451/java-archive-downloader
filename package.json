@@ -1,6 +1,9 @@
 {
   "name": "java-archive-downloader",
   "version": "0.0.1",
+  "scripts": {
+    "start": "gulp"
+  },
   "devDependencies": {
     "gulp": "",
     "gulp-yaml": ""
