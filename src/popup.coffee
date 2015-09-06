@@ -7,6 +7,8 @@ addEventListener 'DOMContentLoaded', ->
   downloads = {}
   update = document.getElementById 'update'
   platform = document.getElementById 'platform'
+  wget = document.getElementById 'wget'
+  curl = document.getElementById 'curl'
   document.getElementById 'dl'
   .addEventListener 'click', ->
     chrome.cookies.set {
@@ -40,5 +42,9 @@ addEventListener 'DOMContentLoaded', ->
     platform.innerHTML = ''
     for key of downloads[@.value].files
       platform.add new Option key, downloads[@.value].files[key].filepath
+    return
+  platform.addEventListener 'change', ->
+    wget.textContent = 'wget --header=\'Cookie: oraclelicense=accept-securebackup-cookie\' ' + @.value.replace 'otn', 'otn-pub'
+    curl.textContent = 'curl -LOboraclelicense=accept-securebackup-cookie ' + @.value.replace 'otn', 'otn-pub'
     return
   return
