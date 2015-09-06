@@ -5,4 +5,12 @@ html(lang='ja')
     title Java Archive Downloader
     script(src='popup.js')
   body
+    label Version:
+      select(id='version')
+        option
+        option(value='8') Java 8
+    label Update:
+      select(id='update')
+    label Platform:
+      select(id='platform')
     button(type='button', id='dl') Download
