@@ -1,4 +1,9 @@
 addEventListener 'DOMContentLoaded', ->
+  urls = {
+    8: 'http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html'
+    7: 'http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html'
+    6: 'http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html'
+  }
   downloads = {}
   update = document.getElementById 'update'
   platform = document.getElementById 'platform'
@@ -18,7 +23,7 @@ addEventListener 'DOMContentLoaded', ->
   document.getElementById 'version'
   .addEventListener 'change', ->
     xhr = new XMLHttpRequest
-    xhr.open 'GET', 'http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html'
+    xhr.open 'GET', urls[@.value]
     xhr.responseType = 'document'
     xhr.addEventListener 'load', ->
       @.response.scripts[8].textContent.match /^downloads.*$/gm
