@@ -27,19 +27,13 @@ addEventListener 'DOMContentLoaded', ->
         return
       update.innerHTML = ''
       for key of downloads
-        option = document.createElement 'option'
-        option.value = key
-        option.textContent = key
-        update.appendChild option
+        update.add new Option key, key
       return
     do xhr.send
     return
   update.addEventListener 'change', ->
     platform.innerHTML = ''
     for key of downloads[@.value].files
-      option = document.createElement 'option'
-      option.value = downloads[@.value].files[key].filepath
-      option.textContent = key
-      platform.appendChild option
+      platform.add new Option key, downloads[@.value].files[key].filepath
     return
   return
