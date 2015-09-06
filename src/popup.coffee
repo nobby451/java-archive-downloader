@@ -1,5 +1,7 @@
 addEventListener 'DOMContentLoaded', ->
   downloads = {}
+  update = document.getElementById 'update'
+  platform = document.getElementById 'platform'
   document.getElementById 'dl'
   .addEventListener 'click', ->
     chrome.cookies.set {
@@ -9,8 +11,7 @@ addEventListener 'DOMContentLoaded', ->
       domain: '.oracle.com'
     }, ->
       chrome.downloads.download {
-        url: document.getElementById 'platform'
-             .value.replace 'otn', 'otn-pub'
+        url: platform.value.replace 'otn', 'otn-pub'
       }
       return
     return
@@ -24,7 +25,6 @@ addEventListener 'DOMContentLoaded', ->
       .forEach (element) ->
         eval element.replace 'new Array()', '{}'
         return
-      update = document.getElementById 'update'
       update.innerHTML = ''
       for key of downloads
         option = document.createElement 'option'
@@ -34,9 +34,7 @@ addEventListener 'DOMContentLoaded', ->
       return
     do xhr.send
     return
-  document.getElementById 'update'
-  .addEventListener 'change', ->
-    platform = document.getElementById 'platform'
+  update.addEventListener 'change', ->
     platform.innerHTML = ''
     for key of downloads[@.value].files
       option = document.createElement 'option'
